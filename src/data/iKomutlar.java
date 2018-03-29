@@ -16,6 +16,8 @@ public interface iKomutlar {
 	public boolean girisKontrol(String kull_ad, String sifre);
 	
 	public ListModel<String> listele();
+	
+	public void filmEkle(String filmAdi, String yonetmen, String yazar, String tur, String sure, String yas_siniri);
 
 	
 }

@@ -13,7 +13,7 @@ public class Komutlar implements iKomutlar {
 	// / BAĞLANTI AYARLARI////////
 	// ///////////////////////////
 	private String kullanici_adi = "root";
-	private String sifre = "kizilsakal";
+	private String sifre = "";
 	private String host = "127.0.0.1";
 	private String db = "sine_data";
 	private int port = 3306;
@@ -39,12 +39,13 @@ public class Komutlar implements iKomutlar {
 
 	@Override
 	public void baglantiAc() {
-		String url = "jdbc:mysql://" + host + ":" + port + "/" + db+"?useSSL=false";
+		String url = "jdbc:mysql://" + host + ":" + port + "/" + db
+				+ "?useSSL=false";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			//System.out.println(sifre);
+			// System.out.println(sifre);
 			conn = DriverManager.getConnection(url, kullanici_adi, sifre);
-			//System.out.println("Veritabanı Girişi Başarılı");
+			// System.out.println("Veritabanı Girişi Başarılı");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Mysql Connector Yok");
 			e.printStackTrace();
@@ -62,8 +63,8 @@ public class Komutlar implements iKomutlar {
 			e.printStackTrace();
 		}
 	}
-	
-	public boolean baglantiKontrol(){
+
+	public boolean baglantiKontrol() {
 		veritabaniSifresi();
 		baglantiAc();
 		if (conn != null) {
@@ -111,5 +112,24 @@ public class Komutlar implements iKomutlar {
 
 	}
 
-	
+	@Override
+	public void filmEkle(String filmAdi, String yonetmen, String yazar,
+			String tur, String sure, String yas_siniri) {
+		try {
+			baglantiAc();
+			String sorgu = "INSERT INTO filmler (film_id, film_ad, yonetmen, yazar, tur, sure, yas_siniri) VALUES (NULL, ?, ?, ?, ?, ?, ?)";
+			ps = conn.prepareStatement(sorgu);
+			ps.setString(1, filmAdi);
+			ps.setString(2, yonetmen);
+			ps.setString(3, yazar);
+			ps.setString(4, tur);
+			ps.setString(5, sure);
+			ps.setString(6, yas_siniri);
+			ps.execute();
+			baglantiKapat();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

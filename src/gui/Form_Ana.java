@@ -57,7 +57,8 @@ public class Form_Ana extends JFrame {
 		JButton btnFilmEkle = new JButton("Film Ekle");
 		btnFilmEkle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				Form_Film_Ekle ffe = new Form_Film_Ekle();
+				ffe.setVisible(true);
 			}
 		});
 		btnFilmEkle.setBounds(12, 259, 387, 25);
