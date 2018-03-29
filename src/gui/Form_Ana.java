@@ -1,14 +1,16 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
+import javax.swing.JButton;
 
-@SuppressWarnings({ "serial", "unused" })
+import data.Komutlar;
+
+@SuppressWarnings("serial")
 public class Form_Ana extends JFrame {
 
 	private JPanel contentPane;
@@ -34,15 +36,22 @@ public class Form_Ana extends JFrame {
 	 */
 	public Form_Ana() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 350, 500);
+		setBounds(100, 100, 413, 320);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		//contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		
-		JList list = new JList();
-		list.setBounds(12, 12, 324, 430);
-		contentPane.add(list);
+		JList<String> listFilm = new JList<String>();
+		listFilm.setBounds(0, 0, 411, 247);
+		contentPane.add(listFilm);
+		
+		Komutlar k = new Komutlar();
+		
+		listFilm.setModel(k.listele());
+		
+		JButton btnFilmEkle = new JButton("Film Ekle");
+		btnFilmEkle.setBounds(12, 259, 387, 25);
+		contentPane.add(btnFilmEkle);
 	}
 }
