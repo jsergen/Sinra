@@ -29,6 +29,8 @@ public class Form_Giris extends JFrame {
 	String ka;
 	String sifre;
 
+	static Komutlar k = new Komutlar();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -36,8 +38,7 @@ public class Form_Giris extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Form_Giris frame = new Form_Giris();
-					frame.setVisible(true);
+					baglantiKontrol();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -45,6 +46,18 @@ public class Form_Giris extends JFrame {
 		});
 	}
 
+	private static void baglantiKontrol(){
+		boolean bayrak = k.baglantiKontrol();
+		if (bayrak == true) {
+			Form_Giris frame = new Form_Giris();
+			frame.setVisible(true);
+		}else {
+			JOptionPane.showMessageDialog(null, "Şifreniz hatalı, yeniden deneyin.");
+			baglantiKontrol();
+		}
+	}
+	
+	
 	/**
 	 * Create the frame.
 	 */
@@ -84,11 +97,11 @@ public class Form_Giris extends JFrame {
 				ka = txf_ad.getText();
 				sifre = String.valueOf(psf_sifre.getPassword());
 				if (!ka.equals("") && !sifre.equals("")) {
-					Komutlar k = new Komutlar();
+					
 					boolean sonuc = k.girisKontrol(ka, sifre);
 					if (sonuc == true) {
-						System.out.println("HÜLOOOO");
-						//SONRAKİ SAYFANIN MÜKEMMEL BİR YOLU BURADAN GEÇECEK
+						Form_Ana fa = new Form_Ana();
+						fa.setVisible(true);
 					} else {
 						JOptionPane.showMessageDialog(null, "Kullanıcı adı veya Şifre hatalı!");
 					}
@@ -104,5 +117,9 @@ public class Form_Giris extends JFrame {
 		lblSinem.setFont(new Font("Ani", Font.BOLD, 30));
 		lblSinem.setBounds(113, 12, 93, 25);
 		contentPane.add(lblSinem);
+		
+		
+		//DIŞARIDAN GELEN METODLAR
+		
 	}
 }

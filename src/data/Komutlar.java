@@ -13,7 +13,7 @@ public class Komutlar implements iKomutlar {
 	// / BAĞLANTI AYARLARI////////
 	// ///////////////////////////
 	private String kullanici_adi = "root";
-	private String sifre = "";
+	private String sifre = "kizilsakal";
 	private String host = "127.0.0.1";
 	private String db = "sine_data";
 	private int port = 3306;
@@ -31,14 +31,20 @@ public class Komutlar implements iKomutlar {
 
 	}
 
+	public String veritabaniSifresi() {
+		String ss = JOptionPane.showInputDialog("Şifreyi girin");
+		this.sifre = ss;
+		return sifre;
+	}
+
 	@Override
-	public void baglantıAc() {
-		String url = "jdbc:mysql://" + host + ":" + port + "/" + db;
+	public void baglantiAc() {
+		String url = "jdbc:mysql://" + host + ":" + port + "/" + db+"?useSSL=false";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			sifre = JOptionPane.showInputDialog("Şifreyi girin");
+			//System.out.println(sifre);
 			conn = DriverManager.getConnection(url, kullanici_adi, sifre);
-			System.out.println("Veritabanı Girişi Başarılı");
+			//System.out.println("Veritabanı Girişi Başarılı");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Mysql Connector Yok");
 			e.printStackTrace();
@@ -49,12 +55,21 @@ public class Komutlar implements iKomutlar {
 	}
 
 	@Override
-	public void baglantıKapat() {
+	public void baglantiKapat() {
 		try {
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean baglantiKontrol(){
+		veritabaniSifresi();
+		baglantiAc();
+		if (conn != null) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -62,7 +77,7 @@ public class Komutlar implements iKomutlar {
 
 		boolean bayrak = false;
 		try {
-			baglantıAc();
+			baglantiAc();
 			ps = conn
 					.prepareStatement("SELECT * FROM kullanici WHERE kullanici_ad=? AND kullanici_sifre=?");
 			ps.setString(1, kull_ad);
@@ -71,7 +86,7 @@ public class Komutlar implements iKomutlar {
 			if (result.next()) {
 				bayrak = true;
 			}
-			baglantıKapat();
+			baglantiKapat();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -80,7 +95,7 @@ public class Komutlar implements iKomutlar {
 
 	public ListModel<String> listele() {
 		try {
-			baglantıAc();
+			baglantiAc();
 			String sorgu = "SELECT * FROM filmler";
 			ps = conn.prepareStatement(sorgu);
 			result = ps.executeQuery();
@@ -88,7 +103,7 @@ public class Komutlar implements iKomutlar {
 			while (result.next()) {
 				DML.addElement(result.getString(2));
 			}
-			baglantıKapat();
+			baglantiKapat();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -96,4 +111,5 @@ public class Komutlar implements iKomutlar {
 
 	}
 
+	
 }
