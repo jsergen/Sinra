@@ -13,7 +13,7 @@ public class Komutlar implements iKomutlar {
 	// / BAĞLANTI AYARLARI////////
 	// ///////////////////////////
 	private String kullanici_adi = "root";
-	private String sifre = "";
+	private String sifre = "kizilsakal";
 	private String host = "127.0.0.1";
 	private String db = "sine_data";
 	private int port = 3306;

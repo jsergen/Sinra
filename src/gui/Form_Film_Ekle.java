@@ -26,7 +26,7 @@ public class Form_Film_Ekle extends JFrame {
 	private JTextField txj_sure;
 	private JTextField txf_tur;
 	private JComboBox<String> cb_yas_siniri;
-	
+
 	Komutlar k = new Komutlar();
 
 	/**
@@ -117,8 +117,8 @@ public class Form_Film_Ekle extends JFrame {
 		cb_yas_siniri.addItem("+15");
 		cb_yas_siniri.addItem("+18");
 		contentPane.add(cb_yas_siniri);
-		// ////////////////////////////////////////
-		// //RESİM ALMA//////////////////////////
+
+		// //RESİM ALMA KISMI
 		JButton btnResimAl = new JButton("Resim Al");
 		btnResimAl.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -127,8 +127,7 @@ public class Form_Film_Ekle extends JFrame {
 		});
 		btnResimAl.setBounds(144, 169, 142, 25);
 		contentPane.add(btnResimAl);
-		// ///////////////////////////////////////
-		// //////FİLM EKLEME
+		// FİLM EKLEME KISMI
 		JButton btnEkle = new JButton("Film Listesine Ekle");
 		btnEkle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -138,18 +137,20 @@ public class Form_Film_Ekle extends JFrame {
 		btnEkle.setBounds(29, 206, 257, 25);
 		contentPane.add(btnEkle);
 	}
-	
-	private void filmEkle(){
+
+	private void filmEkle() {
 		String filmAdi = txf_film.getText();
 		String yonetmen = txf_yonetmen.getText();
 		String yazar = txj_yazar.getText();
 		String tur = txf_tur.getText();
 		String sure = txj_sure.getText();
 		String yas_siniri = String.valueOf(cb_yas_siniri.getSelectedItem());
-		
-		if (filmAdi.equals(null) && yonetmen.equals(null)&&yazar.equals(null)&&tur.equals(null)&&sure.equals(null)&&yas_siniri.equals(null)) {
+
+		if (filmAdi.equals(null) && yonetmen.equals(null) && yazar.equals(null)
+				&& tur.equals(null) && sure.equals(null)
+				&& yas_siniri.equals(null)) {
 			JOptionPane.showMessageDialog(null, "Hiçbir alan boş bırakılamaz");
-		}else {
+		} else {
 			k.filmEkle(filmAdi, yonetmen, yazar, tur, sure, yas_siniri);
 		}
 	}
