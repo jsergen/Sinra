@@ -1,4 +1,4 @@
-package gui;
+package kullanilmayan;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -100,7 +100,7 @@ public class Form_Giris extends JFrame {
 					
 					boolean sonuc = k.girisKontrol(ka, sifre);
 					if (sonuc == true) {
-						Form_Ana fa = new Form_Ana();
+						Form fa = new Form();
 						fa.setVisible(true);
 					} else {
 						JOptionPane.showMessageDialog(null, "Kullanıcı adı veya Şifre hatalı!");

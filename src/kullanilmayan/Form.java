@@ -1,4 +1,4 @@
-package gui;
+package kullanilmayan;
 
 import java.awt.EventQueue;
 
@@ -9,11 +9,14 @@ import javax.swing.JList;
 import javax.swing.JButton;
 
 import data.Komutlar;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import javax.swing.JScrollPane;
+
 @SuppressWarnings("serial")
-public class Form_Ana extends JFrame {
+public class Form extends JFrame {
 
 	private JPanel contentPane;
 
@@ -24,7 +27,7 @@ public class Form_Ana extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Form_Ana frame = new Form_Ana();
+					Form frame = new Form();
 					frame.setVisible(false);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,17 +42,19 @@ public class Form_Ana extends JFrame {
 
 	JList<String> listFilm;
 	Komutlar k = new Komutlar();
+	private JScrollPane scrollPane;
+	private JList<String> list;
 
-	public Form_Ana() {
+	public Form() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 413, 320);
+		setBounds(100, 100, 691, 327);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 
 		listFilm = new JList<String>();
-		listFilm.setBounds(0, 0, 411, 247);
+		listFilm.setBounds(0, 0, 194, 247);
 		contentPane.add(listFilm);
 
 		listFilm.setModel(k.listele());
@@ -61,8 +66,15 @@ public class Form_Ana extends JFrame {
 				ffe.setVisible(true);
 			}
 		});
-		btnFilmEkle.setBounds(12, 259, 387, 25);
+		btnFilmEkle.setBounds(12, 259, 194, 25);
 		contentPane.add(btnFilmEkle);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(240, 12, 369, 247);
+		contentPane.add(scrollPane);
+		
+		list = new JList<String>();
+		scrollPane.setViewportView(list);
 	}
 
 }

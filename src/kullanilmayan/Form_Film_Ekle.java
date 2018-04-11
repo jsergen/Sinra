@@ -1,4 +1,4 @@
-package gui;
+package kullanilmayan;
 
 import java.awt.EventQueue;
 
