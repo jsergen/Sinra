@@ -1,0 +1,44 @@
+TASARIM DEĞİŞTİRME SEBEBİ:
+	ÇOK FAZLA PENCERE ETRAFINDA DÖNEN BİR PROGRAM ELBETTE İNSANLARI BİR SÜRE SONRA AÇMA KAPAMA
+	KONUSUNDA YORACAKTIR. BUNU FARK ETTİĞİMDE TASARIMI DEĞİŞTİRME KARARI ALIM.
+	ŞU ANDA TÜM SİSTEM TEK BİR PENCERE ÜZERİNDEN YÜRÜYECEK ŞEKİLDE AYARLANDI(EKLEME OLMADIĞI TAKDİRDE).
+
+ÇALIŞMA ŞEKLİ
+	İÇERİSİNDE JFRAME BULUNDURAN BİR PENCERE YAPISI ÜZERİNDEN GEÇECEK OLAN JPANELLER ÜZERİNE KURULU. HER PANEL KENDİ
+	İÇERİSİNDE İŞLEV SAHİBİ OLACAK VE DIŞARIDAKİ PANELLERE GEÇİŞ DIŞINDA BİR HAKKI OLMAYACAK..
+	
+TAMAMLANANLAR
+	MYSQL ÜZERİNDE HAZIR VERİTABANI 
+	VERİTABANI EKLEME KISMI 
+	VERİTABANINDAN LİSTEYE VERİ ÇEKME KISMI 
+	JFRAME PENCERESİ 
+	JPANEL GİRİŞ 
+	JPANEL MAİN 
+	
+	
+	
+	
+YAPILACAKLAR
+	JPANEL VERİ GİRİŞ
+	JPANEL ADMİN
+	
+
+----------------------------------------------------------------
+------------------------------------------------------------
+GEÇMİŞ LİSTE
+---------------------------------------------------------------
+YAPILACAKLAR
+Listbox'taki iteme göre film bilgilerinin olduğu ekranın açması
+Aynı sayfaya yorumları çekmesi
+Aynı sayfada yorum girilebilmesi
+Yeni kullanıcı oluşturma
+Ekranlar arası geçiş
+
+
+TAMAMLANANLAR
+Giriş ekranı ve veritabanı bağlantısı
+Giriş ekranında kullanıcı için giriş kontrolü
+Listbox'a veritabanından film isimlerini çekmek
+Film oluşturma ekranı ve veritabanı bağlantısı
+Veritabanı ilişkileri (yorum tablosuna kullanıcı ve film toplusundan değerler düşecek ve her daim senkronize olacak)
+

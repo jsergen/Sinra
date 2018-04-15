@@ -19,5 +19,6 @@ public interface iKomutlar {
 	
 	public void filmEkle(String filmAdi, String yonetmen, String yazar, String tur, String sure, String yas_siniri);
 
+	public String getState();
 	
 }

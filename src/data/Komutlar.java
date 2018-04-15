@@ -132,4 +132,11 @@ public class Komutlar implements iKomutlar {
 		}
 	}
 
+	
+	@Override
+	public String getState() {
+		
+		return null;
+	}
+
 }
